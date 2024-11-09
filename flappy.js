@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    // initialize all DOM elements needed
     const bird = document.querySelector('.bird');
     const gameDisplay = document.querySelector('.game-container');
     const button = document.querySelector('.play button')
@@ -12,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     restartButton.style.display = 'none';
     score.style.display = 'none';
 
+    //bird left and bottom position are in pixels
     let birdLeft = 220;
     let birdBottom = 300;
     let gravity = 1;
@@ -20,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isGameOver = false;
     let scoreCount = -1;
 
+    
     function startGame() {
         birdBottom -= gravity;
         bird.style.bottom = birdBottom + 'px';
@@ -37,22 +41,26 @@ document.addEventListener('DOMContentLoaded', () => {
         bird.style.bottom = birdBottom + 'px';
     }
 
+    // checks to see if button pressed was the spacebar
     function control(e) {
         if (e.keyCode === 32) {
             jump();
         }
     }
 
+    //logic behind the moving pipes
     function generateObstacle() {
         let obstacleLeft = 500;
         let randomHeight = Math.random() * 60;
         let obstacleBottom = randomHeight;
         const obstacle = document.createElement('div');
         const topObstacle = document.createElement('div');
+
         if (!isGameOver) {
             obstacle.classList.add('obstacle');
             topObstacle.classList.add('topObstacle');
         };
+
         gameDisplay.appendChild(obstacle);
         gameDisplay.appendChild(topObstacle);
         obstacle.style.left = obstacleLeft + 'px';
@@ -70,7 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 gameDisplay.removeChild(obstacle);
                 gameDisplay.removeChild(topObstacle);
             }
-
+            
+            //checks for collision
             if ((obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 && ((birdBottom <= (152 + obstacleBottom)) || birdBottom >= (300 + obstacleBottom))) || birdBottom <= 0) {
                 gameOver();
                 gameDisplay.removeChild(obstacle);
@@ -79,7 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        //starts the moving obstacles
         let timerId = setInterval(moveObstacle, 20);
+
+        //iterates score and plays the sounds
         if (!isGameOver) {
             setTimeout(generateObstacle, 3000);
             scoreCount++;
@@ -118,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    //start game listener
     button.addEventListener('click', () => {
         title.style.display = 'none';
         bird.style.backgroundImage = 'url(images/flappy-bird.png)';
@@ -126,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         generateObstacle();
     });
 
+    //restart game listener
     restartButton.addEventListener('click', () => {
         restart();
     });
