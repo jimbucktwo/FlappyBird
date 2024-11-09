@@ -1,0 +1,173 @@
+body {
+    display: flex;
+    margin: 0px;
+}
+
+.game-container {
+    width: 500px;
+    height: 730px;
+    position: absolute;
+}
+
+.border-left {
+    width: 60px;
+    height: 790px;
+    position: absolute;
+    background-color: white;
+    z-index: +2;
+}
+
+.border-right {
+    width: 180px;
+    height: 790px;
+    position: absolute;
+    background-color: white;
+    z-index: +2;
+    left: 500px;
+}
+
+.border-top {
+    width: 660px;
+    height: 50px;
+    position: absolute;
+    background-color: white;
+    z-index: +2;
+    top: -50;
+}
+
+
+.sky {
+    background-image: url(images/fb-game-background.png);
+    width: 500px;
+    height: 580px;
+    position: absolute;
+}
+
+.ground {
+    position: absolute;
+    top: 576px;
+    height: 150px;
+    background-image: url('images/bottom-background.png');
+    width: 100%;
+    z-index: +1;
+}
+
+.bird {
+    width: 60px;
+    height: 45px;
+    position: absolute;
+}
+
+.play {
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-35%, -50%);
+}
+
+.play button {
+    width: 200px;
+    height: 50px;
+    background-color: rgb(255, 102, 14);
+    color: white;
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.title img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    transform: translate(-38%, -50%);
+}
+
+.obstacle {
+    background-image: url(images/flappybird-pipe.png);
+    width: 60px;
+    height: 300px;
+    position: absolute;
+}
+
+.topObstacle {
+    background-image: url(images/flappybird-pipe.png);
+    transform: rotate(180deg);
+    width: 60px;
+    height: 300px;
+    position: absolute;
+}
+
+@keyframes slideright {
+    from {
+        background-position: 10000%;
+    }
+    to {
+        background-position: 0%;
+    }
+  }
+  
+  @-webkit-keyframes slideright {
+    from {
+        background-position: 10000%;
+    }
+    to {
+        background-position: 0%;
+    }
+  }
+
+  .ground-container {
+      height: 150px;
+      width: 580px;
+      left: 60px;
+      position: absolute;
+  }
+  
+  .ground-moving {
+    position: absolute;
+    top: 576px;
+    height: 150px;
+    background-image: url('images/bottom-background.png');
+    background-repeat: repeat-x;
+    animation: slideright 100s infinite linear;
+    -webkit-animation: slideright 100s infinite linear;
+    width: 100%;
+    z-index: +1;
+  }
+
+
+  .try-again {
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+
+.try-again button {
+    width: 200px;
+    height: 50px;
+    background-color: rgb(255, 102, 14);
+    color: white;
+    font-size: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.score {
+    position: absolute;
+    top: 15%;
+    left: 54%;
+    z-index: +2;
+}
+
+.score h1 {
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+}
